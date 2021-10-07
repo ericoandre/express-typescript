@@ -1,3 +1,4 @@
+import path from 'path';
 import {ConnectionOptions} from 'typeorm'
 import {User, Post, Comment} from '../models'
 
@@ -8,7 +9,8 @@ const config : ConnectionOptions = {
   username: process.env.POSTGRES_USER || "postgres",
   password: process.env.POSTGRES_PASSWORD || "postgres",
   database: process.env.POSTGRES_DB || "postgres",
-  entities: [User, Post, Comment],
+  // entities: [User, Post, Comment],
+  entities: [path.join(__dirname, "../entity", "*")],
   synchronize: true,
 }
 
